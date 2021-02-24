@@ -9,7 +9,8 @@ if (!config.githubToken) {
 
 const req = request.defaults({
   headers: {
-    'Authorization': `token ${config.githubToken}`
+    'Authorization': `token ${config.githubToken}`,
+    'User-Agent': 'github-repos-search'
   },
   qs: {
     'per_page': 100
