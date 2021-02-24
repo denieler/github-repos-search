@@ -1,0 +1,11 @@
+{
+  "name": "github-repos-search",
+  "version": "0.0.1",
+  "description": "Search and display information from repos in organization",
+  "main": "index.js",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.72.0",
+    "underscore": "^1.8.3"
+  }
+}
