@@ -26,7 +26,7 @@ const freeFormSearch = async (res, filename, userAdditionalAnswers) => {
     console.log('Repository:', repoResult.name)
 
     if (!repoResult[filename]) {
-      console.log(`/tFila ${filename} was not found`)
+      console.log(`\tFila ${filename} was not found`)
       continue
     }
 
@@ -47,10 +47,19 @@ const freeFormSearch = async (res, filename, userAdditionalAnswers) => {
 const dependenciesVersions = (res, filename, userAdditionalAnswers) => {
   for (repoResult of res) {
     console.log('Repository:', repoResult.name)
+
+    if (!repoResult[filename]) {
+      console.log(`\tFila ${filename} was not found`)
+      continue
+    }
+
     const packageJson = JSON.parse(repoResult[filename])
-    const version = packageJson.dependencies[userAdditionalAnswers.dependencyName]
-      || packageJson.devDependencies[userAdditionalAnswers.dependencyName]
-    console.log(`/t${userAdditionalAnswers.dependencyName}: `, version)
+    const version = (packageJson.dependencies && packageJson.dependencies[userAdditionalAnswers.dependencyName])
+      || (packageJson.devDependencies && packageJson.devDependencies[userAdditionalAnswers.dependencyName])
+
+    if (version) {
+      console.log(`\t${userAdditionalAnswers.dependencyName}: `, version)
+    }
   }
 }
 
