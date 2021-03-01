@@ -6,5 +6,5 @@ Search organization repos files content
 # Usage
 
 ```
-GITHUB_TOKEN={your token} node index.js
+GITHUB_TOKEN={your token} node ./bin/repos.js search
 ```
